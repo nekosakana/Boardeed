@@ -1,0 +1,38 @@
+<%= render 'layouts/header' %>
+
+<div class="col-xs-10 col-xs-offset-1">
+
+  <h2 class="mypage-headline">登録情報編集</h2>
+
+  <%= form_for(@user) do |f| %>
+
+  <div class="row field form-group">
+    <%= f.label :ユーザー名, class: "col-sm-3" %>
+      <%= f.label :ユーザー名%>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="row field form-group">
+    <%= f.label :メールアドレス, class: "col-sm-3" %>
+    <div class="col-sm-8">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field" %>
+    </div>
+  </div>
+
+  <div class="form-group has-icon">
+        <div class="user-edit-image">
+            <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb" %>
+        </div>
+        <label class="control-label sr-only" for="inputEmail">ProfileImage</label>
+        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+    </div>
+
+
+  <div class="actions col-xs-offset-2", style="margin-top: 30px">
+    <%= f.submit "編集内容を保存する", class: "btn btn-primary edit-btn" %>
+    <%= link_to "退会する", user_path, class: "btn btn-danger" %>
+  </div>
+
+<% end %>
+
+</div>
