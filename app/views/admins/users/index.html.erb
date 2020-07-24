@@ -1,0 +1,27 @@
+
+<%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+<div class="col-xs-offset-1 col-xs-10">
+			<h2>ユーザー一覧</h2>
+			<table class="table table-hover table-inverse">
+				<thead>
+					<tr>
+						<th class="col-xs-2 th1">会員ID</th>
+						<th class="ol-xs-3 th2">氏名</th>
+						<th class="ol-xs-3 th3">メールアドレス</th>
+						<th class="ol-xs-3 th4">ステータス</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @users.each do |user| %>
+					<tr>
+						<td><%= user.id %></td>
+						<td><%= user.name %></td>
+						<td><%= user.email %></td>
+						<td>仮
+						</td><!-- ここの記述を変更する必要がある -->
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+</div>
+
