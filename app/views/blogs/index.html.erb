@@ -1,0 +1,38 @@
+<%= render 'layouts/header' %>
+<div class="col-xs-offset-1 col-xs-10">
+    <h2>記事一覧</h2>
+    <table class="table table-hover table-inverse">
+        <thead>
+            <tr>
+                <th class="col-xs-2 th1">ユーザー名</th>
+                <th class="ol-xs-3 th2">タイトル</th>
+                <th class="ol-xs-3 th3">記事内容</th>
+                <th class="ol-xs-3 th4">画像</th>
+                <th class="ol-xs-3 th5">コメント</th>
+                <th class="ol-xs-3 th6">いいね</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @blogs.each do |blog| %>
+            <tr>
+                <td><%= blog.user.name %></td>
+                <td><%= link_to blog.title, blog_path(blog.id) %></td>
+                <td><%= blog.body %></td>
+                <td><%= attachment_image_tag blog, :image, :fill, 60, 60 %></td>
+                <td><%= blog.blog_comments.count %>件</td>
+                <td><% if blog.favorited_by?(current_user) %>
+                        <%= link_to blog_favorites_path(blog), method: :delete, remote: true do %>
+                        <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+    	                <%= blog.favorites.count %>
+    	            <% end %>
+	                <% else %>
+    	                <%= link_to blog_favorites_path(blog), method: :post, remote: true do %>
+    	                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+    	                <%= blog.favorites.count %>
+                    <% end %>
+                <% end %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
