@@ -4,12 +4,12 @@
           <h1>Boadeed</h1>
         </nav>
           <nav>
-            <ul class="nav navbar-nav navbar-right">
+              <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
                  <p class="navbar-text">ようこそ <%= current_user.name %> さん !</p>
-                <li><%= link_to '新規投稿',user_path %></li>
-                <li><%= link_to '記事一覧',user_path %></li>
-                <li><%= link_to 'マイページ',user_path %></li>
+                <li><%= link_to '新規投稿',new_blog_path %></li>
+                <li><%= link_to '記事一覧',blogs_path %></li>
+                <li><%= link_to 'マイページ',user_path(current_user.id) %></li>
                 <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
               <% else %>
                <p class="navbar-text">ようこそ ゲスト さん !</p>
@@ -23,7 +23,6 @@
       </div>
     </header>
       <div class='container'>
-
         <p id="notice"><%= notice %></p>
 
         <%= yield %>
