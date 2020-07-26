@@ -8,5 +8,8 @@
   <h4>画像</h4>
 　<%= f.attachment_field :image %>
 
+    <%= f.label :tag_list, 'タグをカンマ区切りで入力' %>
+    <%= text_field_tag 'blog[tag_list]', @blog.tag_list, :class => "form-control" %>
+
   <%= f.submit '保存' %>
 <% end %>

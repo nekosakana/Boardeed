@@ -1,5 +1,9 @@
 <%= render 'layouts/header' %>
 
+<% @blog.tag_list.each do |tag| %>
+  <span class="label label-success"><%= tag %></span><br>
+<% end %>
+
 <%= @blog.user.name %><br>
 <%= @blog.title %><br>
 <%= @blog.body %><br>
