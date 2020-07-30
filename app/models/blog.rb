@@ -1,6 +1,7 @@
 class Blog < ApplicationRecord
     acts_as_taggable
     belongs_to :user
+    belongs_to :game
     attachment :image
     has_many :blog_comments, dependent: :destroy
     has_many :favorites, dependent: :destroy
