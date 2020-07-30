@@ -19,8 +19,11 @@ Rails.application.routes.draw do
   resources :users
   resources :blogs do
     resource :favorites, only: [:create, :destroy]
+    resources :games, only: [:create]
     resources :blog_comments, only: [:create, :destroy]
   end
+
+  get '/blogs/users/:id' => 'blogs#user_index'
   
   root 'blogs#index'
 

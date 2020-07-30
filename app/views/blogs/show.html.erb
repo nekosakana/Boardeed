@@ -1,12 +1,46 @@
 <%= render 'layouts/header' %>
 
+<div class="col-xs-9">
 <% @blog.tag_list.each do |tag| %>
   <span class="label label-success"><%= tag %></span><br>
 <% end %>
 
 <%= @blog.user.name %><br>
+<h5 class="label label-default">記事タイトル</h5>
 <%= @blog.title %><br>
+
+<h5 class="label label-default">記事本文</h5>
 <%= @blog.body %><br>
+
+<h5 class="label label-default">ボードゲーム名</h5>
+<%= @blog.game.name %><br>
+
+<h5 class="label label-default">プレイ人数</h5>
+<% if @blog.game.play_people == 0 %>
+2人<br>
+<% elsif @blog.game.play_people == 1 %>
+2〜6人<br>
+<% elsif @blog.game.play_people == 2 %>
+3〜6人<br>
+<% elsif @blog.game.play_people == 3 %>
+6人以上<br>
+<% else %>
+登録なし<br>
+<% end %>
+
+<h5 class="label label-default">プレイ時間</h5>
+<% if @blog.game.play_time == 0 %>
+30分<br>
+<% elsif @blog.game.play_time == 1 %>
+30〜60分<br>
+<% elsif @blog.game.play_time == 2 %>
+60〜120分<br>
+<% elsif @blog.game.play_time == 3 %>
+120分以上<br>
+<% else %>
+登録なし<br>
+<% end %>
+
 <%= attachment_image_tag @blog, :image, :fill, 100, 100 %><br>
 
 <% if @blog.favorited_by?(current_user) %>
@@ -51,3 +85,7 @@
 <%= link_to '編集する', edit_blog_path(@blog) %><br>
 <%= link_to '削除する', blog_path(@blog), method: :delete %>
 <% end %>
+
+</div>
+
+<%= render 'layouts/blogside' %>

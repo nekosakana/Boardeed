@@ -1,4 +1,6 @@
 <%= render 'layouts/header' %>
+
+<div class="col-xs-9">
 <h1>編集画面</h1>
 <%= form_for(@blog) do |f| %>
   <h4>タイトル</h4>
@@ -13,3 +15,6 @@
 
   <%= f.submit '保存' %>
 <% end %>
+</div>
+
+<%= render 'layouts/blogside' %>
