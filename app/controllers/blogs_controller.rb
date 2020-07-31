@@ -10,6 +10,21 @@ class BlogsController < ApplicationController
         @tags = ActsAsTaggableOn::Tag.most_used
     end
 
+    def search
+        @blogs = Blog.search(params[:search])
+        @tags = ActsAsTaggableOn::Tag.most_used
+    end
+
+    def check_search
+        @blogs = Blog.check_search(params[:play_people], params[:play_time])
+        @tags = ActsAsTaggableOn::Tag.most_used
+    end
+
+    def tag_search
+        @tags = ActsAsTaggableOn::Tag.most_used
+        @blogs = Blog.tagged_with(params[:tag_name])
+    end
+
     def show
         @blog = Blog.find(params[:id])
         @blog_comment = BlogComment.new

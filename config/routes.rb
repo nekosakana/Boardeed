@@ -24,8 +24,13 @@ Rails.application.routes.draw do
   end
 
   get '/blogs/users/:id' => 'blogs#user_index'
+  get 'search' => 'blogs#search'
+  get 'check/search' => 'blogs#check_search'
+  get 'tag/search' => 'blogs#tag_search'
   
   root 'blogs#index'
+
+  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
