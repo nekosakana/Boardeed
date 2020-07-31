@@ -1,34 +1,31 @@
 <div class="col-xs-3">
 
-    <h4 class="bg-info">サイト内検索</h4>
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search"><br>
-    </div>
+    <h4 class="bg-info">記事検索</h4>
+    <%= form_tag(search_path, :method => 'get') do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag 'Search',  :name => nil %>
+    <% end %>
 
+    <%= form_with(model: @blog, url: check_search_path, method: "get", local: true ) do |f| %>
     <h4 class="bg-info">条件から探す</h4>
         <span>プレイ人数</span><br>
-        <%= check_box_tag :sample %>
-        <%= label_tag :sample, "2人" %>
-        <%= check_box_tag :sample %>
-        <%= label_tag :sample, "2〜6人" %><br>
-        <%= check_box_tag :sample %>
-        <%= label_tag :sample, "3〜6人" %>
-        <%= check_box_tag :sample %>
-        <%= label_tag :sample, "6人以上" %><br>
-
+        <label><%= radio_button_tag :play_people, "0" %>2人</label>
+        <label><%= radio_button_tag :play_people, "1" %>2〜6人</label><br>
+        <label><%= radio_button_tag :play_people, "2" %>3〜6人</label>
+        <label><%= radio_button_tag :play_people, "3" %>6人以上</label><br>
+        
         <span>プレイ時間</span><br>
-        <%= check_box_tag :sample %>
-        <%= label_tag :sample, "30分" %>
-        <%= check_box_tag :sample %>
-        <%= label_tag :sample, "30〜60分" %><br>
-        <%= check_box_tag :sample %>
-        <%= label_tag :sample, "60〜120分" %>
-        <%= check_box_tag :sample %>
-        <%= label_tag :sample, "120分以上" %><br>
+        <label><%= radio_button_tag :play_time, "0" %>30分</label>
+        <label><%= radio_button_tag :play_time, "1" %>30〜60分</label><br>
+        <label><%= radio_button_tag :play_time, "2" %>60〜120分</label>
+        <label><%= radio_button_tag :play_time, "3" %>120分以上</label><br>
+
+        <%= f.submit 'Search' %>
+    <% end %>
 
     <h4 class="bg-info">人気のタグ</h4>
     <% @tags.each do |tag| %>
-    <span class="label label-success"><%= tag %></span>
+    <%= link_to tag, tag_search_path(tag_name: tag.name), class:"label label-success" %>
     <% end %>
          
 </div>
