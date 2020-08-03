@@ -1,3 +1,116 @@
 // Place all the styles related to the Blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+.comment-tag{
+    position: relative;
+    display: inline-block;
+    margin: 0,auto;
+    padding: 10px 10px;
+    min-width: 120px;
+    max-width: 100%;
+    color: #555;
+    font-size: 16px;
+    background: #e0edff;
+  }
+
+.comment-tag:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -20px;
+    border: 15px solid transparent;
+    border-right: 15px solid #e0edff;
+  }
+
+.flex {
+    padding: 10px;
+    display: flex;
+    border-bottom: 1px solid #c2c1c1;
+}
+
+// .blog-item{
+//     padding-bottom: 20px;
+//     margin-bottom: 20px;
+//     border-bottom: 1px solid #c2c1c1;
+// }
+
+.blog-title{
+    padding: 10px 0 10px 5px;
+    margin-left: 30px;
+    background: transparent;
+    border-left: solid 5px #7db4e6;
+}
+
+.blog-text{
+    display: inline-block;
+    padding-top: 10px;
+    margin: 0px 0 5px 30px;
+}
+
+.blog-text2{
+    display: inline-block;
+    padding-top: 10px;
+    margin: 0px 0 5px 0px;
+}
+
+.blog-user{
+    display: inline-block;
+    margin-left: 30px;
+    padding-top: 30px;
+}
+
+.game{
+    display: inline-block;
+    position: relative;
+    color: white;
+    padding:7px 10px 7px 30px;
+    background-color: #3771aa;
+    border-radius:1.5em;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.game::after {
+    position: absolute;
+    top: 50%;
+    left:10px;
+    transform:translateY(-50%);
+    content: '';
+    width: 13px;
+    height:13px;
+    background-color: white;
+    border-radius:100%;
+}
+
+.blog-title-show{
+    padding: 10px 0 10px 5px;
+    background: transparent;
+    border-left: solid 5px #7db4e6;
+    display: inline-block;
+    margin: 5px auto;
+}
+
+.new-title{
+  background: #ffdffa;
+  box-shadow: 0px 0px 0px 5px #ffdffa;
+  border: dashed 1px #fe96f9;
+  padding: 0.2em 0.5em;
+  color: #454545;
+  width: 30%;
+  text-align: center;
+}
+
+.new-content{
+    color: #454545;
+    border-bottom: dashed 2px #fe96f9;
+    width: 30%;
+    text-align: center;
+}

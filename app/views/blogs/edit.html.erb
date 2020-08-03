@@ -1,16 +1,16 @@
 <%= render 'layouts/header' %>
 
 <div class="col-xs-9">
-<h1>編集画面</h1>
+<h1 class="new-title">編集画面</h1>
 <%= form_for(@blog) do |f| %>
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
-  <h4>本文</h4>
-  <%= f.text_area :body %>
-  <h4>画像</h4>
+  <h4 class="new-content">タイトル</h4>
+  <%= f.text_field :title, class:"form-control" %>
+  <h4 class="new-content">本文</h4>
+  <%= f.text_area :body, class:"form-control", rows:"20" %>
+  <h4 class="new-content">画像</h4>
 　<%= f.attachment_field :image %>
 
-    <%= f.label :tag_list, 'タグをカンマ区切りで入力' %>
+    <%= f.label :tag_list, 'タグをカンマ区切りで入力', class:"new-content" %>
     <%= text_field_tag 'blog[tag_list]', @blog.tag_list, :class => "form-control" %>
 
   <%= f.submit '保存' %>

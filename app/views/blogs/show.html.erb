@@ -1,16 +1,26 @@
 <%= render 'layouts/header' %>
 
 <div class="col-xs-9">
-<% @blog.tag_list.each do |tag| %>
-  <span class="label label-success"><%= tag %></span><br>
+
+<h2 class="blog-title-show"><%= @blog.title %></h2><br>
+<% if @blog.user == current_user %>
+<%= link_to '編集する', edit_blog_path(@blog), class:"btn btn-primary" %>
+<%= link_to '削除する', blog_path(@blog), method: :delete, class:"btn btn-danger" %><br>
 <% end %>
 
-<%= @blog.user.name %><br>
-<h5 class="label label-default">記事タイトル</h5>
-<%= @blog.title %><br>
 
-<h5 class="label label-default">記事本文</h5>
-<%= @blog.body %><br>
+<% @blog.tag_list.each do |tag| %>
+  <span class="label label-success"><%= tag %></span>
+<% end %><br>
+
+<%= attachment_image_tag @blog, :image, :fill, 400, 300, class:"img-thumbnail", fallback:"noimage.jpg", size:'400x300' %><br>
+
+<p class="blog-text2"><%= safe_join(@blog.body.split("\n"),tag(:br)) %></p><br>
+
+
+<%= attachment_image_tag(@blog.user, :profile_image, :fill, 50, 50 ) %>
+<%= @blog.user.name %><br>
+
 
 <h5 class="label label-default">ボードゲーム名</h5>
 <%= @blog.game.name %><br>
@@ -41,7 +51,6 @@
 登録なし<br>
 <% end %>
 
-<%= attachment_image_tag @blog, :image, :fill, 100, 100 %><br>
 
 <% if @blog.favorited_by?(current_user) %>
     <%= link_to blog_favorites_path(@blog), method: :delete, remote: true do %>
@@ -58,9 +67,11 @@
 <table id="comments" class="table table-hover table-inverse">
 	<% @blog.blog_comments.each do |blog_comment| %>
 		<tr>
-			<td><%= attachment_image_tag(blog_comment.user, :profile_image, :fill, 50, 50 ) %></td>
-			<td><%= blog_comment.user.name %></td>
-			<td><%= blog_comment.comment %></td>
+			<td><%= attachment_image_tag(blog_comment.user, :profile_image, :fill, 50, 50 ) %><br>
+			<%= blog_comment.user.name %></td>
+			<td><div class="comment-tag">
+			<%= blog_comment.comment %></td>
+			</div>
 			<td>
 				<% if blog_comment.user == current_user%>
 			  		<div>
@@ -75,15 +86,10 @@
 <%= form_for [@blog, @blog_comment] do |f| %>
   <div class="row">
     <div class="col-sm-12">
-      <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+      <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントする" %>
     </div>
   </div>
-  <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-<% end %>
-
-<% if @blog.user == current_user %>
-<%= link_to '編集する', edit_blog_path(@blog) %><br>
-<%= link_to '削除する', blog_path(@blog), method: :delete %>
+  <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %><br>
 <% end %>
 
 </div>

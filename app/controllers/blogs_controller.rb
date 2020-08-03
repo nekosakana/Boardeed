@@ -1,28 +1,28 @@
 class BlogsController < ApplicationController
     def index
-        @blogs = Blog.all
+        @blogs = Blog.all.page(params[:page]).reverse_order
         @tags = ActsAsTaggableOn::Tag.most_used
     end
 
     def user_index
         @user = User.find(params[:id])
-        @blogs = @user.blogs.all
+        @blogs = @user.blogs.all.page(params[:page]).reverse_order
         @tags = ActsAsTaggableOn::Tag.most_used
     end
 
     def search
-        @blogs = Blog.search(params[:search])
+        @blogs = Blog.search(params[:search]).page(params[:page]).reverse_order
         @tags = ActsAsTaggableOn::Tag.most_used
     end
 
     def check_search
-        @blogs = Blog.check_search(params[:play_people], params[:play_time])
+        @blogs = Blog.check_search(params[:play_people], params[:play_time]).page(params[:page]).reverse_order
         @tags = ActsAsTaggableOn::Tag.most_used
     end
 
     def tag_search
         @tags = ActsAsTaggableOn::Tag.most_used
-        @blogs = Blog.tagged_with(params[:tag_name])
+        @blogs = Blog.tagged_with(params[:tag_name]).page(params[:page]).reverse_order
     end
 
     def show
