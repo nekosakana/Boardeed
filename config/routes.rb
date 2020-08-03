@@ -29,7 +29,8 @@ Rails.application.routes.draw do
   get 'search' => 'blogs#search'
   get 'check/search' => 'blogs#check_search'
   get 'tag/search' => 'blogs#tag_search'
-  
+  get '/confirm' => 'users#confirm'
+
   root 'blogs#index'
 
   

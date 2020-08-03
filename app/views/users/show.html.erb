@@ -10,23 +10,22 @@
 
 <div class="col-xs-3">	
 	<h4 class="plofile">登録情報</h4>
-		<table class="table table-bordered mypage-table">
+		<table class="table table-striped">
 			<tbody>
 				<tr>
-					<td class="active", style="width:150px">ユーザー名</td>
+					<td>ユーザー名</td>
 					<td><%= @user.name %></td>
 				</tr>
 				<tr>
-					<td class="active">メールアドレス</td>
+					<td>メールアドレス</td>
 					<td><%= @user.email %></td>
 				</tr>
                 <tr>
-					<td class="active">ユーザーアイコン</td>
+					<td>ユーザーアイコン</td>
 					<td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img" %></td>
 				</tr>
 				<tr>
 					<td><%= link_to "プロフィール編集", edit_user_path(@user),class:"btn btn-primary" %></td>
-					<td><button type="button" class="btn btn-primary">パスワードを変更する</button></td>
 				</tr>
 			</tbody>
 		</table>

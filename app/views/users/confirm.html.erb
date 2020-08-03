@@ -1,0 +1,19 @@
+<%= render 'layouts/header' %>
+
+<div class="col-xs-6 col-xs-offset-3">
+
+	<div class="text-center">
+
+		<h2 class="withdrawal-headline">本当に退会しますか？</h2>
+		<p>退会すると、これまでの投稿はすべて削除され、復元はできません。<br>
+            ※他の人の記事の閲覧は可能です。<br>
+			退会する場合は、「退会する」をクリックしてください。<br></p>
+
+		<div class="actions text-center">
+    		<%= link_to "退会しない",user_path(current_user.id), class:"btn btn-primary withdrawal-btn" %>
+    		<%= link_to "退会する", user_path(current_user.id), method: :delete, class:"btn btn-danger withdrawal-btn", data: { confirm: '退会しますか？' } %>
+  		</div>
+
+	</div>
+
+</div>
