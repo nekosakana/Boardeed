@@ -1,11 +1,16 @@
 <header class="navbar  navbar-default">
       <div class="container-fluid">
         <nav class='nav navbar-nav navbar-left' >
-          <h1>Boadeed</h1>
+          <h1>Boadeed<%= link_to '!',new_admin_session_path %></h1>
         </nav>
           <nav>
               <ul class="nav navbar-nav navbar-right">
-              <% if user_signed_in? %>
+              <% if admin_signed_in? %>
+                <p class="navbar-text">管理者ログイン中</p>
+                <li><%= link_to 'ユーザー一覧',admins_users_path %></li>
+                <li><%= link_to '記事一覧',blogs_path %></li>
+                <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+              <% elsif user_signed_in? %>
                  <p class="navbar-text">ようこそ <%= current_user.name %> さん !</p>
                 <li><%= link_to '新規投稿',new_blog_path %></li>
                 <li><%= link_to '記事一覧',blogs_path %></li>
