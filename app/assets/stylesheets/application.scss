@@ -15,3 +15,41 @@
  */
 @import "bootstrap-sprockets";  /*ここを追加*/
 @import "bootstrap";            /*ここを追加*/
+
+.search{
+    padding: 0.2em 0.5em;
+    margin: 2em 0;
+    background: #d6ebff;
+    box-shadow: 0px 0px 0px 10px #d6ebff;
+    border: dashed 2px white;
+    text-align: center;
+}
+
+.search-tag{
+    display: inline-block;
+    padding: 0.5em 1em;
+    margin: 20px, 0;
+    color: #474747;
+    background: whitesmoke;/*背景色*/
+    border-left: double 7px #4ec4d3;/*左線*/
+    border-right: double 7px #4ec4d3;/*右線*/
+    text-align: center;
+}
+
+.plofile{
+    padding: 0.2em 0.5em;
+    margin: 2em 0;
+    background: #d6daff;
+    box-shadow: 0px 0px 0px 10px #d6daff;
+    border: dashed 2px white;
+    text-align: center;
+}
+
+.search-title{
+    padding: 0.2em 0.5em;
+    margin: 20px, auto;
+    background: #c5fcc5;
+    box-shadow: 0px 0px 0px 10px #c5fcc5;
+    border: dashed 2px white;
+    text-align: center;
+}

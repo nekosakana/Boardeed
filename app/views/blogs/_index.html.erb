@@ -1,29 +1,28 @@
-
-        <tbody>
-            <% @blogs.each do |blog| %>
-            <tr>
-                <td><%= link_to blog.user.name, "/blogs/users/#{blog.user_id}" %></td>
-                <td><%= link_to blog.title, blog_path(blog.id) %></td>
-                <td><%= blog.body %></td>
-                <td><%= attachment_image_tag blog, :image, :fill, 60, 60 %></td>
-                <td><%= blog.blog_comments.count %>件</td>
-                <td> <% if user_signed_in? %>
-                            <% if blog.favorited_by?(current_user) %>
-                                <%= link_to blog_favorites_path(blog), method: :delete, remote: true do %>
-                                <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
-    	                        <%= blog.favorites.count %>
-    	                        <% end %>
-	                        <% else %>
-    	                        <%= link_to blog_favorites_path(blog), method: :post, remote: true do %>
-    	                        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-    	                        <%= blog.favorites.count %>
-                                <% end %>
-                            <% end %>
-                    <% else %>
-                           <span class="glyphicon glyphicon-heart" aria-hidden="true"  style="color: red;"><%= blog.favorites.count %></span></td>
+<% @blogs.each do |blog| %>
+ <div class="flex">
+        <div><%= attachment_image_tag blog, :image, :fill, 200, 200, class:"img-thumbnail", fallback:"noimage.jpg", size:'200x200' %></div>
+        <div>
+            <h3 class="blog-title"><%= link_to blog.title, blog_path(blog.id) %></h3><br>
+            <span class="blog-text"><%= truncate(blog.body) %></span><br>
+            <span class="blog-user"><%= link_to blog.user.name, "/blogs/users/#{blog.user_id}" %></span>
+            <span class="blog-user"><%= blog.blog_comments.count %>件のコメント
+                <% if user_signed_in? %>
+                    <% if blog.favorited_by?(current_user) %>
+                        <%= link_to blog_favorites_path(blog), method: :delete, remote: true do %>
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+                            <%= blog.favorites.count %>
+                        <% end %>
+                <% else %>
+                        <%= link_to blog_favorites_path(blog), method: :post, remote: true do %>
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                            <%= blog.favorites.count %>
+                        <% end %>
                     <% end %>
-                <td><%= blog.game.name %></td>
-            </tr>
-            <% end %>
-        </tbody>
-   
+                <% else %>
+                        <span class="glyphicon glyphicon-heart" aria-hidden="true"  style="color: red;"><%= blog.favorites.count %>
+                <% end %><br></span>
+            <span class="game"><%= blog.game.name %></span>
+        </div>
+    </div>
+<% end %>
+ <%= paginate @blogs %>

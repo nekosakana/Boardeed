@@ -1,21 +1,8 @@
 <%= render 'layouts/header' %>
 
 <div class="col-xs-9">
-    <h2>検索結果一覧</h2>
-    <table class="table table-hover table-inverse">
-        <thead>
-            <tr>
-                <th class="col-xs-2 th1">ユーザー名</th>
-                <th class="ol-xs-3 th2">タイトル</th>
-                <th class="ol-xs-3 th3">記事内容</th>
-                <th class="ol-xs-3 th4">画像</th>
-                <th class="ol-xs-3 th5">コメント</th>
-                <th class="ol-xs-3 th6">いいね</th>
-                <th class="ol-xs-3 th6">ボドゲ名</th>
-            </tr>
-        </thead>
+    <h2 class="search-title">条件検索結果一覧</h2>
 <%= render 'blogs/index' %>
- </table>
 </div>
 
 <%= render 'layouts/blogside' %>

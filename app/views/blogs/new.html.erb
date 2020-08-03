@@ -1,38 +1,38 @@
 <%= render 'layouts/header' %>
 
 <div class="col-xs-9">
-<h1>新規投稿</h1>
+<h1 class="new-title">新規投稿</h1>
 <%= form_with(model: @blog, url: "/blogs", method: "POST", local: true ) do |f| %>
  
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
+  <h4 class="new-content">タイトル</h4>
+  <%= f.text_field :title, class:"form-control" %>
  
-  <h4>本文</h4>
-  <%= f.text_area :body %>
+  <h4 class="new-content">本文</h4>
+  <%= f.text_area :body, class:"form-control", rows:"20" %>
 
-  <h4>ボドゲを登録</h4>
+  <h4 class="new-content">画像を投稿する</h4>
+  <%= f.attachment_field :image %><br>
+
+  <h4 class="new-content">ボードゲーム登録</h4>
   <label class="radio-btn"><%= radio_button_tag :number, "0" %>登録済から選択</label><br>
 				<%= f.collection_select :game_id, Game.all, :id, :name, include_blank: "--選択して下さい--"%><br>
   <label class="radio-btn"><%= radio_button_tag :number, "1" %>新しく登録する</label><br>
-						<%= f.label :ボドゲ名 %>
-						<%= f.text_field :name %><br>
+						<%= f.label :ボードゲーム名 %>
+						<%= f.text_field :name, class:"form-control" %>
   
-  <h4>プレイ人数</h4>
+  <h5>プレイ人数</h5>
   <label class="radio-btn"><%= f.radio_button :play_people, "0" %>2人</label>
   <label class="radio-btn"><%= f.radio_button :play_people, "1" %>2〜6人</label><br>
   <label class="radio-btn"><%= f.radio_button :play_people, "2" %>3〜6人</label>
   <label class="radio-btn"><%= f.radio_button :play_people, "3" %>6人以上</label><br>
 
-  <h4>プレイ時間</h4>
+  <h5>プレイ時間</h5>
   <label class="radio-btn"><%= f.radio_button :play_time, "0" %>30分</label>
   <label class="radio-btn"><%= f.radio_button :play_time, "1" %>30〜60分</label><br>
   <label class="radio-btn"><%= f.radio_button :play_time, "2" %>60〜120分</label>
   <label class="radio-btn"><%= f.radio_button :play_time, "3" %>120分以上</label><br>
 
-
-  <%= f.attachment_field :image %>
-
-  <%= f.label :tag_list, 'タグをカンマ区切りで入力' %>
+  <%= f.label :tag_list, 'タグをカンマ区切りで入力', class:"new-content" %>
   <%= text_field_tag 'blog[tag_list]', @blog.tag_list, :class => "form-control" %>
  
   <%= f.submit '投稿' %>

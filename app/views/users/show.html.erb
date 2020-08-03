@@ -1,15 +1,15 @@
 <%= render 'layouts/header' %>
 
-<div class="row">
-	<div class="col-xs-offset-1 col-xs-５">
-		<h2 class="mypage-headline"><%= @user.name %>さんのマイページ</h2>
 
-		<table>
-			<th>登録情報</th>
-				<td><%= link_to "プロフィール編集", edit_user_path(@user) %></td>
-				<td><button type="button" class="btn btn-primary">パスワードを変更する</button></td>
-		</table>
+<h2 class="mypage-headline"><%= @user.name %>さんのマイページ</h2>
 
+<div class="col-xs-9">
+    <h2 class="search-title"><%= @user.name %>さんの記事一覧</h2>
+        <%= render 'blogs/index' %>
+</div>
+
+<div class="col-xs-3">	
+	<h4 class="plofile">登録情報</h4>
 		<table class="table table-bordered mypage-table">
 			<tbody>
 				<tr>
@@ -24,24 +24,10 @@
 					<td class="active">ユーザーアイコン</td>
 					<td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img" %></td>
 				</tr>
+				<tr>
+					<td><%= link_to "プロフィール編集", edit_user_path(@user),class:"btn btn-primary" %></td>
+					<td><button type="button" class="btn btn-primary">パスワードを変更する</button></td>
+				</tr>
 			</tbody>
 		</table>
-	</div>
-<div class="col-xs-offset-1 col-xs-５">
-    <h2><%= @user.name %>さんの記事一覧</h2>
-    <table class="table table-hover table-inverse">
-        <thead>
-            <tr>
-                <th class="col-xs-2 th1">ユーザー名</th>
-                <th class="ol-xs-3 th2">タイトル</th>
-                <th class="ol-xs-3 th3">記事内容</th>
-                <th class="ol-xs-3 th4">画像</th>
-                <th class="ol-xs-3 th5">コメント</th>
-                <th class="ol-xs-3 th6">いいね</th>
-                <th class="ol-xs- th７">ボドゲ名</th>
-            </tr>
-        </thead>
-        <%= render 'blogs/index' %>
-    </table>
-</div>
 </div>
