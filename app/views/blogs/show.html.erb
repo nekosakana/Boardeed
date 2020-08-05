@@ -3,6 +3,7 @@
 <div class="col-xs-9">
 
 <h2 class="blog-title-show"><%= @blog.title %></h2><br>
+<%= @blog.created_at.strftime("%Y/%m/%d %H:%M:%S") %><br>
 <% if @blog.user == current_user %>
 <%= link_to '編集する', edit_blog_path(@blog), class:"btn btn-primary" %>
 <%= link_to '削除する', blog_path(@blog), method: :delete, class:"btn btn-danger" %><br>
@@ -13,10 +14,9 @@
   <span class="label label-success"><%= tag %></span>
 <% end %><br>
 
-<%= attachment_image_tag @blog, :image, :fill, 400, 300, class:"img-thumbnail", fallback:"noimage.jpg", size:'400x300' %><br>
+<%= attachment_image_tag @blog, :image, :fill, 400, 300, class:"img-thumbnail", fallback:"noimage.jpg", size:'200x100' %><br>
 
-<p class="blog-text2"><%= safe_join(@blog.body.split("\n"),tag(:br)) %></p><br>
-
+<div class="blog-text2"><%= markdown(@blog.body) %></div><br>
 
 <%= attachment_image_tag(@blog.user, :profile_image, :fill, 50, 50 ) %>
 <%= @blog.user.name %><br>

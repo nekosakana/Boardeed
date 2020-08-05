@@ -14,6 +14,7 @@ class Blog < ApplicationRecord
         if search
            Blog.where(['title LIKE ?', "%#{search}%"])
            Blog.where(['body LIKE ?', "%#{search}%"])
+           Blog.joins(:game).where(['name LIKE?', "%#{search}%"])
         else
            Blog.all
         end
