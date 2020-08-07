@@ -1,5 +1,10 @@
 class Blog < ApplicationRecord
     acts_as_taggable
+
+    validates :title, presence: true
+    validates :body, presence: true
+    validates :game_id, presence: true
+
     belongs_to :user
     belongs_to :game
     attachment :image

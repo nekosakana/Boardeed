@@ -1,5 +1,17 @@
 <%= render 'layouts/header' %>
 
+<% if @blog.present? %>
+<% if @blog.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @blog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<% end %>
+
 <div class="col-xs-9">
 <h1 class="new-title">新規投稿</h1>
 <%= form_with(model: @blog, url: "/blogs", method: "POST", local: true ) do |f| %>

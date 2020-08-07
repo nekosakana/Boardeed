@@ -8,7 +8,7 @@
 						<th class="col-xs-2 th1">タグID</th>
 						<th class="ol-xs-3 th2">タグ名</th>
 						<th class="ol-xs-3 th3">作成日</th>
-						<th class="ol-xs-3 th4"></th>
+						<th class="ol-xs-3 th4">使用数</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -17,13 +17,13 @@
 						<td><%= tag.id %></td>
 						<td><%= tag.name %></td>
 						<td><%= tag.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
-						<td></td>
+						<td><%= tag.taggings_count %></td>
 						</td>
 					</tr>
 					<% end %>
-                    <%= paginate @tags %>
 				</tbody>
 			</table>
+    <%= paginate @tags %>
 </div>
 
 <%= render 'layouts/footer' %>
