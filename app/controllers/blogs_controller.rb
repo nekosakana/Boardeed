@@ -64,8 +64,13 @@ class BlogsController < ApplicationController
             user_id: current_user.id,
             game_id: game_id,
         )
-        @blog.save
-        redirect_to blog_path(@blog.id)
+       if @blog.save
+            redirect_to blog_path(@blog.id)
+       else
+        @tags = ActsAsTaggableOn::Tag.most_used
+        render 'new'
+       end
+
     end
 
     def edit
@@ -75,8 +80,12 @@ class BlogsController < ApplicationController
 
     def update
         @blog = Blog.find(params[:id])
-        @blog.update(blog_params)
-        redirect_to blogs_path
+        if @blog.update(blog_params)
+           redirect_to blogs_path
+        else
+           @tags = ActsAsTaggableOn::Tag.most_used
+           render 'edit'
+        end
     end
 
     def destroy

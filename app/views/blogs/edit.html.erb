@@ -1,5 +1,15 @@
 <%= render 'layouts/header' %>
 
+<% if @blog.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @blog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="col-xs-9">
 <h1 class="new-title">編集画面</h1>
 <%= form_for(@blog) do |f| %>

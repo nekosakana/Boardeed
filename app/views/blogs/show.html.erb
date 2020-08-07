@@ -1,5 +1,18 @@
 <%= render 'layouts/header' %>
 
+<% if @comment.present? %>
+<% if @comment.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<% end %>
+
+
 <div class="col-xs-9">
 
 <h2 class="blog-title-show"><%= @blog.title %></h2><br>

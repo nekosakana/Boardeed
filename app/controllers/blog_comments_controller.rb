@@ -1,11 +1,17 @@
 class BlogCommentsController < ApplicationController
     def create
         blog = Blog.find(params[:blog_id])
-        comment = BlogComment.new(blog_comment_params)
-        comment.user_id = current_user.id
-        comment.blog_id = blog.id
-        comment.save
-        redirect_to blog_path(blog)
+        @comment = BlogComment.new(blog_comment_params)
+        @comment.user_id = current_user.id
+        @comment.blog_id = blog.id
+        if @comment.save
+            redirect_to blog_path(blog)
+        else
+            @blog = blog
+            @blog_comment = BlogComment.new
+            @tags = ActsAsTaggableOn::Tag.most_used
+            render 'blogs/show'
+        end
     end
 
     def destroy
