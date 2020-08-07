@@ -1,0 +1,29 @@
+<%= render 'layouts/header' %>
+
+<div class="col-xs-offset-1 col-xs-10">
+			<h2>タグ一覧</h2>
+			<table class="table table-hover table-inverse">
+				<thead>
+					<tr>
+						<th class="col-xs-2 th1">タグID</th>
+						<th class="ol-xs-3 th2">タグ名</th>
+						<th class="ol-xs-3 th3">作成日</th>
+						<th class="ol-xs-3 th4"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @tags.each do |tag| %>
+					<tr>
+						<td><%= tag.id %></td>
+						<td><%= tag.name %></td>
+						<td><%= tag.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+						<td></td>
+						</td>
+					</tr>
+					<% end %>
+                    <%= paginate @tags %>
+				</tbody>
+			</table>
+</div>
+
+<%= render 'layouts/footer' %>

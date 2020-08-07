@@ -1,2 +1,30 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<%= render 'layouts/header' %>
+
+<div class="col-xs-11 site_image">
+	<div class="site_description">
+	    Boadeedへようこそ！<br>
+	    このサイトは、ボードゲームに特化したブログ投稿サイトです。<br>
+	    会員でない方も記事の閲覧はできますが、<br>
+	    投稿にはログインが必要となります。
+	</div>
+</div>
+
+<div class="col-xs-12">
+    <h2 class="random">オススメ記事</h2>
+	    <% @random.each do |blog| %>
+        <div class="randomblog clearfix">
+	     <%= attachment_image_tag(blog, :image, :fill, 120, 120, fallback:"noimage.jpg", size:'120x120') %>
+	        <%= link_to blog.title, blog_path(blog.id) %><br>
+	    </div>
+	    <% end %>
+</div>
+
+<div class="col-xs-9">
+    <h2 class="search-title">すべての記事一覧</h2>
+
+<%= render 'blogs/index' %>
+</div>
+
+<%= render 'layouts/blogside' %>
+
+<%= render 'layouts/footer' %>

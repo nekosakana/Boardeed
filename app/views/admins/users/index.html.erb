@@ -8,6 +8,7 @@
 						<th class="col-xs-2 th1">会員ID</th>
 						<th class="ol-xs-3 th2">氏名</th>
 						<th class="ol-xs-3 th3">メールアドレス</th>
+						<th class="ol-xs-3 th3">ブログ数</th>
 						<th class="ol-xs-3 th4">ステータス(クリックで変更)</th>
 					</tr>
 				</thead>
@@ -17,6 +18,7 @@
 						<td><%= user.id %></td>
 						<td><%= user.name %></td>
 						<td><%= user.email %></td>
+						<td><%= user.blog_ids.count %></td>
 						<td><% if user.deleted? %>
 							<%= link_to '退会済み', admins_user_path(user.id), method: :patch, data: { confirm: 'ユーザーを復活しますか？' } %>
 							<% else %>
@@ -25,7 +27,10 @@
 						</td>
 					</tr>
 					<% end %>
+					<%= paginate @users %>
 				</tbody>
 			</table>
+
+			<%= render 'layouts/footer' %>
 </div>
 

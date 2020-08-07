@@ -1,0 +1,56 @@
+<%= render 'layouts/header' %>
+
+
+<h2 class="mypage-headline"><%= @game.name %></h2>
+
+<div class="col-xs-9">	
+	<h4>登録情報</h4>
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<td>ゲーム名</td>
+					<td><%= @game.name %></td>
+				</tr>
+				<tr>
+					<td>プレイ人数</td>
+					<td><% if @game.play_people == 0 %>
+                        2人<br>
+                        <% elsif @game.play_people == 1 %>
+                        2〜6人<br>
+                        <% elsif @game.play_people == 2 %>
+                        3〜6人<br>
+                        <% elsif @game.play_people == 3 %>
+                        6人以上<br>
+                        <% else %>
+                        登録なし<br>
+                        <% end %>
+                        </td>
+				</tr>
+                <tr>
+					<td>プレイ時間</td>
+					<td><% if @game.play_time == 0 %>
+                        30分<br>
+                        <% elsif @game.play_time == 1 %>
+                        30〜60分<br>
+                        <% elsif @game.play_time == 2 %>
+                        60〜120分<br>
+                        <% elsif @game.play_time == 3 %>
+                        120分以上<br>
+                        <% else %>
+                        登録なし<br>
+                        <% end %></td>
+				</tr>
+				<tr>
+					<td><%= link_to "編集", edit_admins_game_path(@game),class:"btn btn-primary" %></td>
+				</tr>
+			</tbody>
+		</table>
+</div>
+
+<div class="col-xs-9">
+    <h2><%= @game.name %>の記事一覧</h2>
+        <%= render 'blogs/index' %>
+</div>
+
+<%= render 'layouts/footer' %>
+

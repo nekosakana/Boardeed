@@ -1,6 +1,8 @@
 class Admins::UsersController < ApplicationController
+    before_action :authenticate_admin!
+
     def index
-        @users = User.with_deleted.all
+        @users = User.with_deleted.all.page(params[:page]).per(10)
     end
 
     def update

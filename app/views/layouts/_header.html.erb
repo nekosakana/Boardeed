@@ -1,14 +1,15 @@
 <header class="navbar  navbar-default">
       <div class="container-fluid">
         <nav class='nav navbar-nav navbar-left' >
-          <h1>Boadeed<%= link_to '!',new_admin_session_path %></h1>
+          <h1>Boadeed</h1>
         </nav>
           <nav>
               <ul class="nav navbar-nav navbar-right">
               <% if admin_signed_in? %>
                 <p class="navbar-text">管理者ログイン中</p>
                 <li><%= link_to 'ユーザー一覧',admins_users_path %></li>
-                <li><%= link_to '記事一覧',blogs_path %></li>
+                <li><%= link_to 'ボードゲーム一覧',admins_games_path %></li>
+                <li><%= link_to 'タグ一覧',admins_tags_path %></li>
                 <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
               <% elsif user_signed_in? %>
                  <p class="navbar-text">ようこそ <%= current_user.name %> さん !</p>
@@ -18,7 +19,8 @@
                 <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
               <% else %>
                <p class="navbar-text">ようこそ ゲスト さん !</p>
-                <li><%= link_to 'About',new_user_registration_path %></li>
+               <li><%= link_to 'トップ',root_path %></li>
+                <li><%= link_to 'About',homes_about_path %></li>
                 <li><%= link_to '記事一覧',blogs_path %></li>
                 <li><%= link_to '新規登録',new_user_registration_path %></li>
                 <li><%= link_to 'ログイン', new_user_session_path %></li>
@@ -27,7 +29,11 @@
           </nav>
       </div>
     </header>
+
+    <div class= "backimage">
       <div class='container'>
+      
         <p id="notice"><%= notice %></p>
 
         <%= yield %>
+        
