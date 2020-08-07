@@ -1,0 +1,32 @@
+<%= render 'layouts/header' %>
+
+<div class="col-xs-8">
+
+  <h2 class="mypage-edit">ボードゲーム情報編集</h2>
+
+  <%= form_with(model: @game, url: admins_game_path, method: "PATCH", local: true ) do |f| %>
+
+    <label>ボードゲーム名</label>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control" %>
+
+  <h5>プレイ人数</h5>
+    <label class="radio-btn"><%= f.radio_button :play_people, "0" %>2人</label>
+    <label class="radio-btn"><%= f.radio_button :play_people, "1" %>2〜6人</label><br>
+    <label class="radio-btn"><%= f.radio_button :play_people, "2" %>3〜6人</label>
+    <label class="radio-btn"><%= f.radio_button :play_people, "3" %>6人以上</label><br>
+
+  <h5>プレイ時間</h5>
+    <label class="radio-btn"><%= f.radio_button :play_time, "0" %>30分</label>
+    <label class="radio-btn"><%= f.radio_button :play_time, "1" %>30〜60分</label><br>
+    <label class="radio-btn"><%= f.radio_button :play_time, "2" %>60〜120分</label>
+    <label class="radio-btn"><%= f.radio_button :play_time, "3" %>120分以上</label><br>
+
+  <div class="actions col-xs-offset-2", style="margin-top: 30px">
+    <%= f.submit "編集内容を保存する", class: "btn btn-primary edit-btn" %>
+  </div>
+
+<% end %>
+
+</div>
+
+<%= render 'layouts/footer' %>

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :users
+    get 'tags' => 'blogs#tag_index'
+    resources :games
   end
 
   devise_for :users, controllers: {
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  get '/blogs/old' => 'blogs#old_index'
   resources :users
   resources :blogs do
     resource :favorites, only: [:create, :destroy]
@@ -31,7 +34,7 @@ Rails.application.routes.draw do
   get 'tag/search' => 'blogs#tag_search'
   get '/confirm' => 'users#confirm'
 
-  root 'blogs#index'
+  root 'homes#top'
 
 
   

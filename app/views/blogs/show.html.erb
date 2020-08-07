@@ -51,17 +51,20 @@
 登録なし<br>
 <% end %>
 
-
-<% if @blog.favorited_by?(current_user) %>
-    <%= link_to blog_favorites_path(@blog), method: :delete, remote: true do %>
-        <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
-    	<%= @blog.favorites.count %>
-    <% end %>
+<% if user_signed_in? %>
+	<% if @blog.favorited_by?(current_user) %>
+		<%= link_to blog_favorites_path(@blog), method: :delete, remote: true do %>
+			<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+			<%= @blog.favorites.count %>
+		<% end %>
+	<% else %>
+		<%= link_to blog_favorites_path(@blog), method: :post, remote: true do %>
+			<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+			<%= @blog.favorites.count %>
+		<% end %>
+	<% end %>
 <% else %>
-    <%= link_to blog_favorites_path(@blog), method: :post, remote: true do %>
-        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-    	<%= @blog.favorites.count %>
-    <% end %>
+<span class="glyphicon glyphicon-heart" aria-hidden="true"  style="color: red;"><%= @blog.favorites.count %><br></span>
 <% end %>
 
 <table id="comments" class="table table-hover table-inverse">
@@ -83,6 +86,8 @@
 	<% end %>
 </table>
 
+
+<% if user_signed_in? %>
 <%= form_for [@blog, @blog_comment] do |f| %>
   <div class="row">
     <div class="col-sm-12">
@@ -91,7 +96,10 @@
   </div>
   <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %><br>
 <% end %>
+<% end %>
 
 </div>
 
 <%= render 'layouts/blogside' %>
+
+<%= render 'layouts/footer' %>

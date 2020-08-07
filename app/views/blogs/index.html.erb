@@ -2,7 +2,11 @@
 
 <div class="col-xs-9">
     <h2 class="search-title">すべての記事一覧</h2>
+     <%= link_to '新着順',blogs_path %>|<%= link_to '古い順',blogs_old_path %>
+
 <%= render 'blogs/index' %>
 </div>
 
 <%= render 'layouts/blogside' %>
+
+<%= render 'layouts/footer' %>

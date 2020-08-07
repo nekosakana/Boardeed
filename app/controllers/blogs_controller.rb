@@ -1,6 +1,13 @@
 class BlogsController < ApplicationController
+    before_action :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
+
     def index
         @blogs = Blog.all.page(params[:page]).reverse_order
+        @tags = ActsAsTaggableOn::Tag.most_used
+    end
+
+    def old_index
+        @blogs = Blog.all.page(params[:page])
         @tags = ActsAsTaggableOn::Tag.most_used
     end
 
