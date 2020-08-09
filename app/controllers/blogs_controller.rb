@@ -63,6 +63,7 @@ class BlogsController < ApplicationController
             tag_list: params[:blog][:tag_list],
             user_id: current_user.id,
             game_id: game_id,
+            rate: params[:blog][:rate],
         )
        if @blog.save
             redirect_to blog_path(@blog.id)
@@ -96,6 +97,6 @@ class BlogsController < ApplicationController
 
     private
   def blog_params
-    params.require(:blog).permit(:title, :image, :body, :tag_list, :number, :name, :game_id, :play_people, :play_time)
+    params.require(:blog).permit(:title, :image, :body, :tag_list, :number, :name, :game_id, :play_people, :play_time,:rate)
   end
 end
