@@ -27,9 +27,25 @@
   <span class="label label-success"><%= tag %></span>
 <% end %><br>
 
-<%= attachment_image_tag @blog, :image, :fill, 400, 300, class:"img-thumbnail", fallback:"noimage.jpg", size:'200x100' %><br>
+<%= attachment_image_tag @blog, :image, :fill, 600, 300, class:"img-thumbnail", fallback:"noimage.jpg", size:'200x100' %><br>
 
 <div class="blog-text2"><%= markdown(@blog.body) %></div><br>
+
+<!--/星評価-->
+<h5 class="label label-default">今回のゲーム評価</h5>
+<div id="star-rate-<%= @blog.id %>" class="blog-text2"></div><br>
+<script>
+	$('#star-rate-<%= @blog.id %>').raty({
+	size: 36,
+	starOff:  '<%= asset_path('star-off.png') %>',
+	starOn : '<%= asset_path('star-on.png') %>',
+	starHalf: '<%= asset_path('star-half.png') %>',
+	half: true,
+	readOnly: true,
+	score: <%= @blog.rate %>,
+	});
+</script>  
+<!--/星評価-->
 
 <%= attachment_image_tag(@blog.user, :profile_image, :fill, 50, 50 ) %>
 <%= @blog.user.name %><br>
