@@ -1,5 +1,7 @@
 <%= render 'layouts/header' %>
 
+<script src="jquery.raty.js"></script>
+
 <% if @comment.present? %>
 <% if @comment.errors.any? %>
   <div class="alert alert-warning">
@@ -35,6 +37,7 @@
 <h5 class="label label-default">今回のゲーム評価</h5>
 <div id="star-rate-<%= @blog.id %>" class="blog-text2"></div><br>
 <script>
+    $('#star-rate-<%= @blog.id %>').empty();
 	$('#star-rate-<%= @blog.id %>').raty({
 	size: 36,
 	starOff:  '<%= asset_path('star-off.png') %>',

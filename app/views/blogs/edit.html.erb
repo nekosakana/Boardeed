@@ -1,5 +1,7 @@
 <%= render 'layouts/header' %>
 
+<script src="jquery.raty.js"></script>
+
 <% if @blog.errors.any? %>
   <div class="alert alert-warning">
     <ul>
@@ -24,14 +26,16 @@
   </div>
 
   <script>
-  $('#star').raty({
-    size     : 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    scoreName: 'blog[rate]',
-    half: true,
-  });
+    $('#star').empty();
+    $('#star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'blog[rate]',
+      half: true,
+      score: <%= @blog.rate %>,
+    });
   </script>
   
   <h4 class="new-content">画像</h4>

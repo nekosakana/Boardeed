@@ -1,3 +1,5 @@
+<script src="jquery.raty.js"></script>
+
 <% @blogs.each do |blog| %>
  <div class="flex">
         <div><%= attachment_image_tag blog, :image, :fill, 200, 200, class:"img-thumbnail", fallback:"noimage.jpg", size:'200x200' %></div>
@@ -5,17 +7,18 @@
             <h3 class="blog-title"><%= link_to blog.title, blog_path(blog.id) %></h3><br>
             <span class="blog-text"><%= truncate(markdown(blog.body).gsub(%r{</?[^>]+?>},'')) %></span><br>
         <!--/星評価-->
-            <div id="star-rate-<%= blog.id %>" class="star"></div>
+          <div id="star-rate-<%= blog.id %>" class="star"></div>
           <script>
-          $('#star-rate-<%= blog.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= blog.rate %>,
-          });
+            $('#star-rate-<%= blog.id %>').empty();
+            $('#star-rate-<%= blog.id %>').raty({
+                size: 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                readOnly: true,
+                score: <%= blog.rate %>,
+            });
           </script>  
         <!--/星評価-->
             <span class="blog-user"><%= link_to blog.user.name, "/blogs/users/#{blog.user_id}" %></span>
