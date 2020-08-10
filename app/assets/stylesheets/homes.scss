@@ -17,6 +17,7 @@
 	margin-bottom: 10px;
 	padding: 0 !important;
 }
+
 .site_description{
     font-size: 20px;
     margin: 0 auto;
@@ -27,12 +28,20 @@
     text-shadow: 2px 2px 0 #f5f5f5;
 }
 
+.content {
+    position: relative;
+    display: table;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.pull-middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
 .randomblog{
-    float:left;
-    width: 300px;
-    height: 150px;
     border: solid #dad8d8;
-    margin: 10px;
     background-color: #f5f5f5;
 }
 
@@ -42,11 +51,54 @@
     border: dashed 1px #ffe8df;
     padding: 0.2em 0.5em;
     color: #454545;
-    width: 30%;
     text-align: center;
 
 }
 
-.about-title{
-    
+.header-image {
+    width: 100%;
+    padding-right: 30px;
+}
+
+.fix-box {
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+.fix-box > h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
+    color: whitesmoke;
+    font-size: 3.5em;
+    text-shadow: 2px 2px 0 #6d6a6a;
+}
+
+.box1{
+    background-image: url(chess-5209995_1920.jpg);
+}
+
+.box2{
+    background-image: url(cube-3983634_1920.jpg);
+}
+
+.box3{
+    background-image: url(play-3978856_1920.jpg);
+}
+
+.box4{
+    background-image: url(board-game-529586_1920.jpg);
+}
+
+.scloll-box{
+    min-height: 100vh;
+    background-color: white;
 }

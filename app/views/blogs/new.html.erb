@@ -1,4 +1,3 @@
-<%= render 'layouts/header' %>
 
 <script src="jquery.raty.js"></script>
 
@@ -15,6 +14,7 @@
 <% end %>
 
 <div class="col-xs-9">
+<div class="create-box">
 <h1 class="new-title">新規投稿</h1>
 <%= form_with(model: @blog, url: "/blogs", method: "POST", local: true ) do |f| %>
  
@@ -76,7 +76,7 @@
 <% end %>
 
 </div>
+</div>
 
 <%= render 'layouts/blogside' %>
 
-<%= render 'layouts/footer' %>
