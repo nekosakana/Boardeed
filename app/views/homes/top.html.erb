@@ -1,30 +1,95 @@
-<%= render 'layouts/header' %>
 
-<div class="col-xs-11 site_image">
-	<div class="site_description">
-	    Boadeedへようこそ！<br>
-	    このサイトは、ボードゲームに特化したブログ投稿サイトです。<br>
-	    会員でない方も記事の閲覧はできますが、<br>
-	    投稿にはログインが必要となります。
-	</div>
+<div class="container">
+
+  <div class="fix-box box1"><h1>Welcome to Boadeed！</h1></div>
+
+    <div class="scloll-box">
+      <div class="row">
+        <div class="content">
+          <div class="pull-middle">
+            <div class="col-md-6 col-md-offset-1">
+              <h1>Boadeedへようこそ！</h1>
+              <p class="lead">
+                このサイトは、ボードゲームに特化したブログ投稿サイトです。<br>
+              </p>
+              <small>※会員でない方も記事の閲覧はできますが、投稿にはログインが必要となります。</small>
+            </div>
+            <div class="col-md-5">
+              <%= image_tag asset_path("dice-5363809_1920.jpg"), class: "header-image"%>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="fix-box box2"><h1>Boardeedとは</h1></div>
+
+  <div class="scloll-box">
+      <div class="row">
+        <div class="content">
+          <div class="pull-middle">
+            <div class="col-md-6 col-md-offset-1">
+              <p class="lead">
+                Boardeedは、<br>
+                誰でも気軽にボードゲームのプレイ記事を投稿したり<br>
+                プレイ記事の閲覧ができるサイトです。
+              </p>
+            </div>
+            <!--/サイト内のスクショに変える-->
+            <div class="col-md-5">
+              <%= image_tag asset_path("backgammon-3084639_1920.jpg"), class: "header-image"%>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="fix-box box3"><h1>記事を書く</h1></div>
+
+  <div class="scloll-box">
+      <div class="row">
+        <div class="content">
+          <div class="pull-middle">
+            <div class="col-md-6 col-md-offset-1">
+              <p class="lead">
+                あなたがプレイしたボードゲームについて、<br>
+                感想や評価を自由に投稿することができます。<br>
+                使い方は簡単！プレイしたボードゲームを選択し、<br>
+                自由に記述するだけ！<br>
+              </p>
+              <small>投稿にはマークダウン記法が使用できます。</small>
+            </div>
+            <!--/サイト内のスクショに変える-->
+            <div class="col-md-5">
+              <%= image_tag asset_path("black-and-white-2558362_1920.jpg"), class: "header-image"%>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fix-box box4"><h1>記事を見る</h1></div>
+
+    <div class="scloll-box">
+      <div class="row">
+        <div class="content">
+          <div class="pull-middle">
+            <div class="col-md-6 col-md-offset-1">
+              <p class="lead">
+                他の人が投稿したプレイ記事について<br>
+                自由に検索・閲覧が可能です。<br>
+                検索には、フリーワードでの検索、<br>
+                タグ検索、条件検索が可能です。<br>
+              </p>
+            </div>
+            <!--/サイト内のスクショに変える-->
+            <div class="col-md-5">
+              <%= image_tag asset_path("scrabble-4342738_1920.jpg"), class: "header-image"%>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
 </div>
-
-<div class="col-xs-12">
-    <h2 class="random">オススメ記事</h2>
-	    <% @random.each do |blog| %>
-        <div class="randomblog clearfix">
-	     <%= attachment_image_tag(blog, :image, :fill, 120, 120, fallback:"noimage.jpg", size:'120x120') %>
-	        <%= link_to blog.title, blog_path(blog.id) %><br>
-	    </div>
-	    <% end %>
-</div>
-
-<div class="col-xs-9">
-    <h2 class="search-title">すべての記事一覧</h2>
-
-<%= render 'blogs/index' %>
-</div>
-
-<%= render 'layouts/blogside' %>
-
-<%= render 'layouts/footer' %>
