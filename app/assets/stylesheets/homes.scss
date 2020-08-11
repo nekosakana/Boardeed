@@ -11,7 +11,7 @@
 .site_image{
     height: 200px;
     width: 100%;
-	background-image: url(play-3978856_1920.jpg);
+	background-image: image-url("play-3978856_1920.jpg");
 	background-size: cover;
 	background-position: center;
 	margin-bottom: 10px;
@@ -83,19 +83,19 @@
 }
 
 .box1{
-    background-image: url(chess-5209995_1920.jpg);
+    background-image: image-url("chess-5209995_1920.jpg");
 }
 
 .box2{
-    background-image: url(cube-3983634_1920.jpg);
+    background-image: image-url("cube-3983634_1920.jpg");
 }
 
 .box3{
-    background-image: url(play-3978856_1920.jpg);
+    background-image: image-url("play-3978856_1920.jpg");
 }
 
 .box4{
-    background-image: url(board-game-529586_1920.jpg);
+    background-image: image-url("board-game-529586_1920.jpg");
 }
 
 .scloll-box{
