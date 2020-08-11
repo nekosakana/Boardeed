@@ -41,7 +41,7 @@
   <h4 class="new-content">画像</h4>
 　<%= f.attachment_field :image %>
 <div class="blog-image">
-     <%= attachment_image_tag @blog, :image,:fill, 600, 300, class:"blog-thumbnail", fallback: "noimage.jpg" %>
+     <%= attachment_image_tag @blog, :image, class:"blog-thumbnail", fallback: "noimage.jpg" %>
   </div>
 
 
