@@ -77,12 +77,15 @@ class BlogsController < ApplicationController
     def edit
         @blog = Blog.find(params[:id])
         @tags = ActsAsTaggableOn::Tag.most_used
+        if @blog.user != current_user
+            redirect_to blogs_path
+        end
     end
 
     def update
         @blog = Blog.find(params[:id])
         if @blog.update(blog_params)
-           redirect_to blogs_path
+           redirect_to blog_path(@blog.id)
         else
            @tags = ActsAsTaggableOn::Tag.most_used
            render 'edit'
