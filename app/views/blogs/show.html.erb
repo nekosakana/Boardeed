@@ -31,7 +31,7 @@
   <span class="label label-success"><%= tag %></span>
 <% end %><br>
 
-<%= attachment_image_tag @blog, :image,class:"blog-thumbnail",fallback: "noimage.jpg" %><br>
+<%= attachment_image_tag @blog, :image, class:"blog-thumbnail",fallback: "noimage.jpg" %><br>
 
 <div class="blog-text2"><%= markdown(@blog.body) %></div><br>
 

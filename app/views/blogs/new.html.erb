@@ -43,7 +43,7 @@
   <h4 class="new-content">画像を投稿する</h4>
   <%= f.attachment_field :image %><br>
   <div class="blog-image">
-     <%= attachment_image_tag @blog, :image, :fill, 600, 300, class:"blog-thumbnail", fallback: "noimage.jpg" %>
+     <%= attachment_image_tag @blog, :image, class:"blog-thumbnail", fallback: "noimage.jpg" %>
   </div>
 
   <h4 class="new-content">ボードゲーム登録</h4>
