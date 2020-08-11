@@ -17,7 +17,7 @@
                 starHalf: '<%= asset_path('star-half.png') %>',
                 half: true,
                 readOnly: true,
-                score: <%= blog.rate %>,
+                score: <%= blog.rate ? blog.rate : 0 %>,
             });
           </script>  
         <!--/星評価-->

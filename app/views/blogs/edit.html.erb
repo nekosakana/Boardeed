@@ -20,8 +20,8 @@
   <h4 class="new-content">本文</h4>
   <%= f.text_area :body, class:"form-control", rows:"20" %>
   
+  <h4 class="new-content">ボードゲーム評価</h4>
   <div class="form-group row" id="star">
-    <h4 class="new-content">ボードゲーム評価</h4>
     <%= f.hidden_field :rate, id: :review_star %>
   </div>
 
@@ -34,7 +34,7 @@
       starHalf: '<%= asset_path('star-half.png') %>',
       scoreName: 'blog[rate]',
       half: true,
-      score: <%= @blog.rate %>,
+      score: <%= @blog.rate ? @blog.rate : 0 %>,
     });
   </script>
   
